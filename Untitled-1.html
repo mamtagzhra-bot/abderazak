@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Game Zone DZ</title>
+
+<style>
+
+body{
+  background:#111;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+  padding:20px;
+}
+
+h1{
+  margin-bottom:30px;
+  color:#00bfff;
+}
+
+.section{
+  background:#222;
+  padding:20px;
+  margin:20px auto;
+  width:300px;
+  border-radius:15px;
+}
+
+/* Buttons */
+button{
+  padding:10px 15px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  background:#00bfff;
+  color:white;
+  margin-top:10px;
+}
+
+input{
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  width:80%;
+  margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🎮 Game Zone DZ</h1>
+
+<!-- GAME 1 -->
+<div class="section">
+
+<h2>Click Game</h2>
+
+<h3 id="score">0</h3>
+
+<button onclick="addPoint()">اضغط</button>
+
+</div>
+
+<!-- GAME 2 -->
+<div class="section">
+
+<h2>Guess Number</h2>
+
+<input id="guess" type="number" placeholder="1 - 10">
+
+<br>
+
+<button onclick="checkGuess()">تحقق</button>
+
+<p id="result"></p>
+
+</div>
+
+<!-- GAME 3 -->
+<div class="section">
+
+<h2>Quiz</h2>
+
+<p>ما هي عاصمة الجزائر؟</p>
+
+<button onclick="quiz('paris')">باريس</button>
+<button onclick="quiz('alger')">الجزائر</button>
+<button onclick="quiz('cairo')">القاهرة</button>
+
+<p id="quizResult"></p>
+
+</div>
+
+<script>
+
+// GAME 1
+let score = 0;
+
+function addPoint(){
+  score++;
+  document.getElementById("score").innerText = score;
+}
+
+
+// GAME 2
+let secret = Math.floor(Math.random() * 10) + 1;
+
+function checkGuess(){
+
+  let userGuess = document.getElementById("guess").value;
+
+  if(userGuess == secret){
+    document.getElementById("result").innerText = "صح 🎉";
+  }
+  else if(userGuess > secret){
+    document.getElementById("result").innerText = "صغير شوي";
+  }
+  else{
+    document.getElementById("result").innerText = "كبير شوي";
+  }
+
+}
+
+
+// GAME 3
+function quiz(answer){
+
+  if(answer == "alger"){
+    document.getElementById("quizResult").innerText = "صح 🎉";
+  }
+  else{
+    document.getElementById("quizResult").innerText = "غلط ❌";
+  }
+
+}
+
+</script>
+
+</body>
+</html>
